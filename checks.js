@@ -4,15 +4,15 @@ const notIE = { isIE: false, version: null }
 function detectIE10 (userAgent) {
   const hasMsie = userAgent.includes('MSIE ')
   return hasMsie
-    ? { isIE: true, version: _getVersion('10', userAgent) }
+    ? { isIE: true, version: getVersion('10', userAgent) }
     : notIE
 }
 
 // IE 11
 function detectIE11 (userAgent) {
-  const hasTrident = userAgent.includes('Trident/')
-  return hasTrident
-    ? { isIE: true, version: _getVersion('11', userAgent) }
+  const hasRevision = userAgent.includes('rv:')
+  return hasRevision
+    ? { isIE: true, version: getVersion('11', userAgent) }
     : notIE
 }
 
@@ -20,7 +20,7 @@ function detectIE11 (userAgent) {
 function detectEdge (userAgent) {
   const hasEdge = userAgent.includes('Edge')
   return hasEdge
-    ? { isIE: true, version: _getVersion('edge', userAgent) }
+    ? { isIE: true, version: getVersion('edge', userAgent) }
     : notIE
 }
 
@@ -29,19 +29,17 @@ function detectEdge (userAgent) {
  * @param {String} ie Internet Explorer version to extract ('edge' || '11' || '10')
  * @param {String} userAgent User agent string
  */
-function _getVersion (ie, userAgent) {
-  const parseVersion = versionIndex => userAgent.indexOf('.', versionIndex)
-
+function getVersion (ie, userAgent) {
   switch (ie) {
     case 'edge':
-      const edgeIndex = userAgent.indexOf('Edge/')
-      return +userAgent.substring(edgeIndex + 5, parseVersion(edgeIndex), 10)
+      const edgeRegex = /Edge\/(\d*)\.\d*/g
+      return +edgeRegex.exec(userAgent)[1]
     case '11':
-      const revisionIndex = userAgent.indexOf('rv:')
-      return +userAgent.substring(revisionIndex + 3, parseVersion(revisionIndex), 10)
+      const revisionRegex = /rv:(\d*)\.\d*/g
+      return +revisionRegex.exec(userAgent)[1]
     case '10':
-      const msieIndex = userAgent.indexOf('MSIE ')
-      return +userAgent.substring(msieIndex + 5, parseVersion(msieIndex), 10)
+      const msieRegex = /MSIE (\d*)\.\d*/g
+      return +msieRegex.exec(userAgent)[1]
   }
 }
 

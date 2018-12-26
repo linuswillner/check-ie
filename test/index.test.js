@@ -5,15 +5,15 @@ const checkIE = require('../')
 const userAgents = {
   ie10: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)', // If 10 is detected, all versions below will be as well
   ie11: 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko',
-  edge12: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36 Edge/12.0',
-  edge13: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586'
+  edge14: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14931'
 }
 
 const options = {
   checkAll: { detectAll: true },
   checkEdge: { detectEdge: true },
   check10: { detectIE10: true },
-  check11: { detectIE11: true }
+  check11: { detectIE11: true },
+  check10AndEdge: { detectIE10: true, detectEdge: true }
 }
 
 describe('General functionality', () => {
@@ -33,11 +33,10 @@ describe('General functionality', () => {
 
 describe('Edge checker', () => {
   it('Detects all Edge versions', () => {
-    const { edge13, edge12 } = userAgents
+    const { edge14 } = userAgents
     const setup = options.checkEdge
 
-    expect(checkIE(edge13, setup)).toEqual({ isIE: true, version: 13 })
-    expect(checkIE(edge12, setup)).toEqual({ isIE: true, version: 12 })
+    expect(checkIE(edge14, setup)).toEqual({ isIE: true, version: 14 })
   })
 
   it('Does not detect IE versions with Edge', () => {
@@ -61,5 +60,50 @@ describe('IE checker', () => {
     const setup = options.check10
 
     expect(checkIE(ie10, setup)).toEqual({ isIE: true, version: 10 })
+  })
+})
+
+describe('Combined checker', () => {
+  it('Detects all IE versions at once', () => {
+    const { ie10, ie11, edge14 } = userAgents
+    const setup = options.checkAll
+
+    expect([
+      checkIE(ie10, setup),
+      checkIE(ie11, setup),
+      checkIE(edge14, setup)
+    ]).toEqual([
+      { isIE: true, version: 10 },
+      { isIE: true, version: 11 },
+      { isIE: true, version: 14 }
+    ])
+  })
+
+  it('Detects several separate versions', () => {
+    const { ie10, ie11, edge14 } = userAgents
+    const setup = options.check10AndEdge
+
+    expect([
+      checkIE(ie10, setup),
+      checkIE(ie11, setup),
+      checkIE(edge14, setup)
+    ]).toEqual([
+      { isIE: true, version: 10 },
+      { isIE: false, version: null },
+      { isIE: true, version: 14 }
+    ])
+  })
+
+  it('Detects only a specific version', () => {
+    const { ie10, edge14 } = userAgents
+    const setup = options.checkEdge
+
+    expect([
+      checkIE(ie10, setup),
+      checkIE(edge14, setup)
+    ]).toEqual([
+      { isIE: false, version: null },
+      { isIE: true, version: 14 }
+    ])
   })
 })
