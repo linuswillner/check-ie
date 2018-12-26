@@ -1,0 +1,39 @@
+{
+  "name": "check-ie",
+  "version": "1.0.0",
+  "description": "Check if user browser is Internet Explorer.",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint . && jest && codecov --disable=gcov",
+    "test-local": "eslint . && jest",
+    "test-dev": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/js-rcon/check-ie.git"
+  },
+  "keywords": [
+    "internet explorer",
+    "ie",
+    "browser"
+  ],
+  "author": "Linus Willner <hello@linuswillner.me> (https://linuswillner.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/js-rcon/check-ie/issues"
+  },
+  "homepage": "https://github.com/js-rcon/check-ie#readme",
+  "devDependencies": {
+    "codecov": "^3.1.0",
+    "eslint": "^5.10.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^23.6.0"
+  },
+  "dependencies": {
+    "defaults": "^1.0.3"
+  }
+}
