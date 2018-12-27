@@ -9,10 +9,13 @@ This module is very easy to use. Simply pass in a user agent string and get a re
 ```js
 const checkIE = require('check-ie')
 
-// From window.navigator.userAgent
-const userAgent = 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko'
+const ie11 = 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko'
 
-checkIE(userAgent) // { isIE: true, version: 11 }
+checkIE(ie11) // { isIE: true, name: 'Internet Explorer', version: 11 }
+
+const firefox = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:64.0) Gecko/20100101 Firefox/64.0'
+
+checkIE(firefox) // { isIE: false, name: null, version: null }
 ```
 
 ## Options

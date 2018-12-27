@@ -10,8 +10,9 @@ function detectIE10 (userAgent) {
 
 // IE 11
 function detectIE11 (userAgent) {
+  const hasTrident = userAgent.includes('Trident/')
   const hasRevision = userAgent.includes('rv:')
-  return hasRevision
+  return hasTrident && hasRevision
     ? { isIE: true, name: 'Internet Explorer', version: getVersion('11', userAgent) }
     : notIE
 }
