@@ -1,6 +1,6 @@
 {
   "name": "check-ie",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Check if user browser is Internet Explorer.",
   "main": "index.js",
   "files": [ "checks.js" ],
