@@ -1,10 +1,10 @@
-const notIE = { isIE: false, version: null }
+const notIE = { isIE: false, name: null, version: null }
 
 // IE 10 and below
 function detectIE10 (userAgent) {
   const hasMsie = userAgent.includes('MSIE ')
   return hasMsie
-    ? { isIE: true, version: getVersion('10', userAgent) }
+    ? { isIE: true, name: 'Internet Explorer', version: getVersion('10', userAgent) }
     : notIE
 }
 
@@ -12,7 +12,7 @@ function detectIE10 (userAgent) {
 function detectIE11 (userAgent) {
   const hasRevision = userAgent.includes('rv:')
   return hasRevision
-    ? { isIE: true, version: getVersion('11', userAgent) }
+    ? { isIE: true, name: 'Internet Explorer', version: getVersion('11', userAgent) }
     : notIE
 }
 
@@ -20,7 +20,7 @@ function detectIE11 (userAgent) {
 function detectEdge (userAgent) {
   const hasEdge = userAgent.includes('Edge')
   return hasEdge
-    ? { isIE: true, version: getVersion('edge', userAgent) }
+    ? { isIE: true, name: 'Edge', version: getVersion('edge', userAgent) }
     : notIE
 }
 

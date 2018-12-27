@@ -7,7 +7,7 @@ const checks = require('./checks')
  * @see https://github.com/js-rcon/check-ie#readme
  */
 function checkIE (userAgent, options) {
-  const notIE = { isIE: false, version: null }
+  const notIE = { isIE: false, name: null, version: null }
 
   if (!userAgent) throw new Error('No user agent supplied.')
   else {
