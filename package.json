@@ -1,12 +1,16 @@
 {
   "name": "check-ie",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Check if user browser is Internet Explorer.",
   "main": "index.js",
-  "files": [ "checks.js" ],
+  "files": [
+    "checks.js"
+  ],
   "scripts": {
-    "test": "eslint . && jest && codecov --disable=gcov",
-    "test-local": "eslint . && jest",
+    "test": "npm run lint && jest && codecov --disable=gcov",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
+    "test-local": "npm run lint && jest",
     "test-dev": "jest --watch"
   },
   "repository": {
@@ -25,14 +29,14 @@
   },
   "homepage": "https://github.com/js-rcon/check-ie#readme",
   "devDependencies": {
-    "codecov": "^3.1.0",
-    "eslint": "^5.10.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-node": "^8.0.0",
-    "eslint-plugin-promise": "^4.0.1",
+    "codecov": "^3.5.0",
+    "eslint": "^6.1.0",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
-    "jest": "^23.6.0"
+    "jest": "^24.8.0"
   },
   "dependencies": {
     "defaults": "^1.0.3"
