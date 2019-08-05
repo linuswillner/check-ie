@@ -1,5 +1,5 @@
 module.exports = {
   collectCoverage: true,
-  collectCoverageFrom: [ 'index.js', 'checks.js' ],
+  collectCoverageFrom: ['index.js', 'checks.js'],
   coverageDirectory: './coverage/'
 }

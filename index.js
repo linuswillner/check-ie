@@ -13,7 +13,7 @@ function checkIE (userAgent, options) {
   else {
     if (!options) options = { detectAll: true }
 
-    for (let c in checks) {
+    for (const c in checks) {
       if (!options.detectAll && !options[c]) continue
 
       const result = checks[c](userAgent)
