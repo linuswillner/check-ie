@@ -31,15 +31,16 @@ function detectEdge (userAgent) {
  * @param {String} userAgent User agent string
  */
 function getVersion (ie, userAgent) {
+  const edgeRegex = /Edge\/(\d*)\.\d*/g
+  const revisionRegex = /rv:(\d*)\.\d*/g
+  const msieRegex = /MSIE (\d*)\.\d*/g
+
   switch (ie) {
     case 'edge':
-      const edgeRegex = /Edge\/(\d*)\.\d*/g
       return +edgeRegex.exec(userAgent)[1]
     case '11':
-      const revisionRegex = /rv:(\d*)\.\d*/g
       return +revisionRegex.exec(userAgent)[1]
     case '10':
-      const msieRegex = /MSIE (\d*)\.\d*/g
       return +msieRegex.exec(userAgent)[1]
   }
 }
