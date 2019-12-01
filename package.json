@@ -29,14 +29,14 @@
   },
   "homepage": "https://github.com/js-rcon/check-ie#readme",
   "devDependencies": {
-    "codecov": "^3.5.0",
-    "eslint": "^6.1.0",
-    "eslint-config-standard": "^13.0.1",
+    "codecov": "^3.6.1",
+    "eslint": "^6.7.2",
+    "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-node": "^9.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "jest": "^24.8.0"
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^24.9.0"
   },
   "dependencies": {
     "defaults": "^1.0.3"
