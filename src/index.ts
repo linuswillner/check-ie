@@ -21,7 +21,7 @@ export default function checkIE (userAgent: string, options: CheckIEOptions): Ch
     for (const check in detectors) {
       if (options && !options[check]) continue // Not checking for this version, skip
 
-      const result: CheckIEResult = detectors[check](userAgent)
+      const result = detectors[check](userAgent)
       if (result.isIE) return result
     }
 
