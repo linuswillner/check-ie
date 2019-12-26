@@ -1,9 +1,8 @@
 # NPM
 node_modules
-npm-debug.log
 
-# Visual Studio Code
-.vscode
+# Production output
+lib
 
 # Code coverage
 coverage

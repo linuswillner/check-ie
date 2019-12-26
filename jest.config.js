@@ -1,5 +1,7 @@
 module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
   collectCoverage: true,
-  collectCoverageFrom: ['index.js', 'checks.js'],
+  collectCoverageFrom: ['src/**/*'],
   coverageDirectory: './coverage/'
 }

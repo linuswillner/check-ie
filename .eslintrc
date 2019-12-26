@@ -1,17 +1,23 @@
 {
+  "parser": "@typescript-eslint/parser",
   "env": {
-    "es6": true,
-    "node": true
+    "es2020": true,
+    "node": true,
+    "jest": true
   },
   "parserOptions": {
-    "ecmaVersion": 8,
+    "project": "./tsconfig.json",
     "ecmaFeatures": {
-      "globalReturn": true
+      "globalReturn": true,
+      "jsx": true
     },
     "sourceType": "module"
   },
-  "extends": "standard",
+  "extends": "standard-with-typescript",
   "plugins": [
-    "standard"
-  ]
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "@typescript-eslint/strict-boolean-expressions": "off"
+  }
 }

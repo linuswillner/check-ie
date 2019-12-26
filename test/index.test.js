@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 
-const checkIE = require('../')
+const checkIE = require('../src').default
 
 const userAgents = {
   ie10: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)', // If 10 is detected, all versions below will be as well
@@ -9,17 +9,16 @@ const userAgents = {
 }
 
 const options = {
-  checkAll: { detectAll: true },
-  checkEdge: { detectEdge: true },
-  check10: { detectIE10: true },
-  check11: { detectIE11: true },
-  check10AndEdge: { detectIE10: true, detectEdge: true }
+  check10: { ie10: true },
+  check11: { ie11: true },
+  checkEdge: { edge: true },
+  check10AndEdge: { ie10: true, edge: true }
 }
 
 describe('General functionality', () => {
   it('Fallbacks to default options if none were provided', () => {
     const { ie10 } = userAgents
-    expect(checkIE(ie10)).toEqual({ isIE: true, name: 'Internet Explorer', version: 10 })
+    expect(checkIE(ie10)).toEqual({ isIE: true, name: 'Internet Explorer', version: '10.0' })
   })
 
   it('Throws an error if no user agent is supplied', () => {
@@ -36,14 +35,14 @@ describe('Edge checker', () => {
     const { edge14 } = userAgents
     const setup = options.checkEdge
 
-    expect(checkIE(edge14, setup)).toEqual({ isIE: true, name: 'Edge', version: 14 })
+    expect(checkIE(edge14, setup)).toEqual({ isIE: true, name: 'Edge', version: '14.14931' })
   })
 
   it('Does not detect IE versions with Edge', () => {
     const { ie11 } = userAgents
     const setup = options.checkEdge
 
-    expect(checkIE(ie11, setup)).toEqual({ isIE: false, name: null, version: null })
+    expect(checkIE(ie11, setup)).toEqual({ isIE: false, name: '', version: '' })
   })
 })
 
@@ -52,30 +51,29 @@ describe('IE checker', () => {
     const { ie11 } = userAgents
     const setup = options.check11
 
-    expect(checkIE(ie11, setup)).toEqual({ isIE: true, name: 'Internet Explorer', version: 11 })
+    expect(checkIE(ie11, setup)).toEqual({ isIE: true, name: 'Internet Explorer', version: '11.0' })
   })
 
   it('Detects all IE versions from 10 down', () => {
     const { ie10 } = userAgents
     const setup = options.check10
 
-    expect(checkIE(ie10, setup)).toEqual({ isIE: true, name: 'Internet Explorer', version: 10 })
+    expect(checkIE(ie10, setup)).toEqual({ isIE: true, name: 'Internet Explorer', version: '10.0' })
   })
 })
 
 describe('Combined checker', () => {
   it('Detects all IE versions at once', () => {
     const { ie10, ie11, edge14 } = userAgents
-    const setup = options.checkAll
 
     expect([
-      checkIE(ie10, setup),
-      checkIE(ie11, setup),
-      checkIE(edge14, setup)
+      checkIE(ie10),
+      checkIE(ie11),
+      checkIE(edge14)
     ]).toEqual([
-      { isIE: true, name: 'Internet Explorer', version: 10 },
-      { isIE: true, name: 'Internet Explorer', version: 11 },
-      { isIE: true, name: 'Edge', version: 14 }
+      { isIE: true, name: 'Internet Explorer', version: '10.0' },
+      { isIE: true, name: 'Internet Explorer', version: '11.0' },
+      { isIE: true, name: 'Edge', version: '14.14931' }
     ])
   })
 
@@ -88,9 +86,9 @@ describe('Combined checker', () => {
       checkIE(ie11, setup),
       checkIE(edge14, setup)
     ]).toEqual([
-      { isIE: true, name: 'Internet Explorer', version: 10 },
-      { isIE: false, name: null, version: null },
-      { isIE: true, name: 'Edge', version: 14 }
+      { isIE: true, name: 'Internet Explorer', version: '10.0' },
+      { isIE: false, name: '', version: '' },
+      { isIE: true, name: 'Edge', version: '14.14931' }
     ])
   })
 
@@ -102,8 +100,8 @@ describe('Combined checker', () => {
       checkIE(ie10, setup),
       checkIE(edge14, setup)
     ]).toEqual([
-      { isIE: false, name: null, version: null },
-      { isIE: true, name: 'Edge', version: 14 }
+      { isIE: false, name: '', version: '' },
+      { isIE: true, name: 'Edge', version: '14.14931' }
     ])
   })
 })

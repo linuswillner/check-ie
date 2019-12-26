@@ -1,17 +1,19 @@
 {
   "name": "check-ie",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "Check if user browser is Internet Explorer.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "files": [
-    "checks.js"
+    "lib"
   ],
   "scripts": {
     "test": "npm run lint && jest && codecov --disable=gcov",
-    "lint": "eslint .",
-    "lint-fix": "eslint . --fix",
     "test-local": "npm run lint && jest",
-    "test-dev": "jest --watch"
+    "test-watch": "jest --watch",
+    "build": "rimraf ./lib && tsc",
+    "build-watch": "tsc --watch",
+    "lint": "eslint . --ext .ts",
+    "lint-fix": "eslint . --ext .ts --fix"
   },
   "repository": {
     "type": "git",
@@ -28,17 +30,22 @@
     "url": "https://github.com/js-rcon/check-ie/issues"
   },
   "homepage": "https://github.com/js-rcon/check-ie#readme",
+  "dependencies": {},
   "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.20",
+    "@typescript-eslint/eslint-plugin": "^2.12.0",
+    "@typescript-eslint/parser": "^2.12.0",
     "codecov": "^3.6.1",
     "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.0",
+    "eslint-config-standard-with-typescript": "^11.0.1",
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "jest": "^24.9.0"
-  },
-  "dependencies": {
-    "defaults": "^1.0.3"
+    "jest": "^24.9.0",
+    "rimraf": "^3.0.0",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.3"
   }
 }
