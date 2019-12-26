@@ -1,6 +1,7 @@
 # v2.0.0
 
 Complete rewrite of the project to TypeScript.  
+Removed obsolete `defaults` dependency; this project is now zero-dependency.  
 Options have been reworked; see below.  
 Return value types for the `name` and `version` properties have changed; see below.
 

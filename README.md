@@ -1,6 +1,10 @@
 # check-ie
 
-Check if a user browser is Internet Explorer based on the user agent string (In browser context [`window.navigator.userAgent`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorID/userAgent)).
+A lightweight, zero-dependency way to check if a user browser is Internet Explorer.
+
+This module checks if a user browser is Internet Explorer based on the user agent string (In browser context [`window.navigator.userAgent`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorID/userAgent)).
+
+Note: User agents can easily be spoofed. You should always rely on checking for existence of JavaScript features for being completely sure of support for them and the browser being used. See the [MDN disclaimer on user agent string accuracy](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorID/userAgent) for more details.
 
 ## Usage
 
