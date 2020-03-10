@@ -36,7 +36,7 @@
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.0",
     "@typescript-eslint/eslint-plugin": "^2.22.0",
-    "@typescript-eslint/parser": "^2.22.0",
+    "@typescript-eslint/parser": "^2.23.0",
     "codecov": "^3.6.5",
     "eslint": "^6.8.0",
     "eslint-config-standard-with-typescript": "^12.0.1",
