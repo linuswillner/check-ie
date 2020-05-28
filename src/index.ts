@@ -11,7 +11,7 @@ const detectors: CheckIEDetectors = {
  * Check if user browser is latest Edge or below.
  * @param {String} userAgent User agent for evaluation.
  * @param {String} options Options object. If omitted, checks for all Internet Explorer versions starting from latest Edge.
- * @see https://github.com/js-rcon/check-ie#readme
+ * @see https://github.com/linuswillner/check-ie#readme
  */
 export default function checkIE (userAgent: string, options: CheckIEOptions): CheckIEResult {
   const notIE: CheckIEResult = { isIE: false, name: '', version: '' }

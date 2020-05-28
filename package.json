@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/js-rcon/check-ie.git"
+    "url": "git+https://github.com/linuswillner/check-ie.git"
   },
   "keywords": [
     "internet explorer",
@@ -28,9 +28,9 @@
   "author": "Linus Willner <hello@linuswillner.me> (https://linuswillner.me)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/js-rcon/check-ie/issues"
+    "url": "https://github.com/linuswillner/check-ie/issues"
   },
-  "homepage": "https://github.com/js-rcon/check-ie#readme",
+  "homepage": "https://github.com/linuswillner/check-ie#readme",
   "dependencies": {},
   "devDependencies": {
     "@types/jest": "^25.2.3",
