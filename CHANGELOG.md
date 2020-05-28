@@ -1,3 +1,7 @@
+# v2.0.1
+
+Moved repositories; js-rcon/check-ie is now linuswillner/check-ie.
+
 # v2.0.0
 
 Complete rewrite of the project to TypeScript.  
